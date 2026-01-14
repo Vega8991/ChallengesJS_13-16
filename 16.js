@@ -50,9 +50,10 @@ function packGifts(gifts, maxWeight) {
         } else {
             pesoActual += gifts[i];
         }
-        if(pesoActual > 0){
-            trineos++;
-        }
+    }
+
+    if (pesoActual > 0) {
+        trineos++;
     }
 
     return trineos;
