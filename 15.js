@@ -35,6 +35,47 @@ Nota: El tablero puede ser de cualquier tamaño. No hay diagonales. /*
  * @returns {boolean}
  */
 function hasFourLights(board) {
-  // Code here
-  return false
+    const filas = board.length;
+    if (filas === 0) return false;
+    const columnas = board[0].length;
+
+    for (let i = 0; i < filas; i++) {
+        for (let j = 0; j <= columnas - 4; j++) {
+            if (
+                board[i][j] !== "." &&
+                board[i][j] === board[i][j + 1] &&
+                board[i][j] === board[i][j + 2] &&
+                board[i][j] === board[i][j + 3]
+            ) {
+                return true;
+            }
+        }
+    }
+
+    for (let j = 0; j < columnas; j++) {
+        for (let i = 0; i <= filas - 4; i++) {
+            if (
+                board[i][j] !== "." &&
+                board[i][j] === board[i + 1][j] &&
+                board[i][j] === board[i + 2][j] &&
+                board[i][j] === board[i + 3][j]
+            ) {
+                return true;
+            }
+        }
+    }
+
+    return false;
 }
+
+console.log(hasFourLights([
+  ['.', '.', '.', '.', '.'],
+  ['R', 'R', 'R', 'R', '.'],
+  ['G', 'G', '.', '.', '.']
+]));
+
+console.log(hasFourLights([
+  ['R', 'G', 'R'],
+  ['G', 'R', 'G'],
+  ['G', 'R', 'G']
+]));
